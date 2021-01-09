@@ -12,7 +12,7 @@ NodeJS
 
 To clone
 
-`git clone https://github.com/karinlj/kakrins-portfolio.git`
+`git clone https://github.com/karinlj/karins-portfolio.git`
 
 To install
 
