@@ -481,14 +481,14 @@ section {
   .home_img_wrapper {
     position: relative;
     border-radius: $themeBorder_radius;
-    min-height: 900px;
+    min-height: 770px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     .heading_box {
       display: flex;
       justify-content: center;
-      padding: 3rem 0 2rem 0;
+      padding: 2rem;
     }
     .home_name {
       font-size: 5.5rem;
@@ -523,32 +523,7 @@ section {
         font-size: 2.4rem;
       }
     }
-    .home_text {
-      max-width: 90%;
-      margin: 0 auto 3rem auto;
-      opacity: 0.95;
-      border-radius: $themeBorder_radius;
-      background: #fff;
-      padding: 2rem;
 
-      @media all and (min-width: $md-min) {
-        padding: 3rem;
-        max-width: 80%;
-        opacity: 0.8;
-      }
-      @media all and (min-width: $xl-min) {
-        max-width: 65%;
-      }
-      a {
-        color: $linkcolor;
-        &:hover {
-          text-decoration: none;
-          filter: brightness(80%);
-          -webkit-filter: brightness(80%);
-          transition: all 1s ease;
-        }
-      }
-    }
     &::before {
       position: absolute;
       top: 0;
@@ -559,6 +534,36 @@ section {
       content: "";
       display: block;
       border-radius: $themeBorder_radius;
+    }
+  }
+  .home_text {
+    max-width: 70%;
+    margin: 0 auto 3rem auto;
+    // opacity: 0.95;
+    // border-radius: $themeBorder_radius;
+    // background: #fff;
+    padding: 2rem;
+
+    @media all and (min-width: $md-min) {
+      padding: 3rem;
+      max-width: 80%;
+      opacity: 0.8;
+    }
+    @media all and (min-width: $xl-min) {
+      max-width: 65%;
+    }
+    h2 {
+      font-size: 3rem;
+      margin-bottom: 2rem;
+    }
+    a {
+      color: $linkcolor;
+      &:hover {
+        text-decoration: none;
+        filter: brightness(80%);
+        -webkit-filter: brightness(80%);
+        transition: all 1s ease;
+      }
     }
   }
 
@@ -1049,7 +1054,12 @@ section {
       img {
         display: inline;
         margin: 0 0.6rem 0 0.2rem;
-        max-width: 1.5rem;
+        &.react_logo {
+          max-width: 4.7rem;
+        }
+        &.contentful_logo {
+          max-width: 8rem;
+        }
       }
       .sanity {
         max-width: 1.3rem;

@@ -65,10 +65,20 @@ const Home = () => {
                   ""
                 )}
               </section>
-
-              {/* <div className="home_text">
-                {aboutData ? <div>{aboutData.fields.content}</div> : ""}
-              </div> */}
+            </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-12">
+            <div className="home_text">
+              <h2 className="section-heading text-center cursive">About Me</h2>
+              {aboutData ? (
+                <div>
+                  {aboutData.fields.content.content[0].content[0].value}
+                </div>
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </div>

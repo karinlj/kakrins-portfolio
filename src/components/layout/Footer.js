@@ -1,5 +1,7 @@
 import React from "react";
 import react_logo from "../../images/react_logo.png";
+import contentful_logo_small from "../../images/contentful_logo_small.png";
+import react_logo_small from "../../images/react_logo_small.png";
 
 const Footer = () => {
   //UI component
@@ -12,19 +14,26 @@ const Footer = () => {
               <h5>Powered by</h5>
               <div className="powered_by">
                 <a href="https://reactjs.org/">
-                  React
-                  <img src={react_logo} alt="React logo" />
+                  <img
+                    src={react_logo_small}
+                    alt="React logo"
+                    className="react_logo"
+                  />
                 </a>
                 and
+                <a href="https://www.contentful.com/">
+                  <img
+                    src={contentful_logo_small}
+                    alt="Contentful logo"
+                    className="contentful_logo"
+                  />
+                </a>
               </div>
             </section>
           </div>
           <div className="col-4">
             <div className="back">
-              <a href="#nav">
-                To top
-                {/* <i className="fas fa-chevron-up arrow" title="Back to top"></i> */}
-              </a>
+              <a href="#nav">To top</a>
             </div>
           </div>
         </div>
