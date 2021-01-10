@@ -1,5 +1,4 @@
 import React from "react";
-import react_logo from "../../images/react_logo.png";
 import contentful_logo_small from "../../images/contentful_logo_small.png";
 import react_logo_small from "../../images/react_logo_small.png";
 

@@ -481,7 +481,7 @@ section {
   .home_img_wrapper {
     position: relative;
     border-radius: $themeBorder_radius;
-    min-height: 770px;
+    min-height: 600px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -538,7 +538,7 @@ section {
   }
   .home_text {
     max-width: 70%;
-    margin: 0 auto 3rem auto;
+    margin: 0 auto;
     // opacity: 0.95;
     // border-radius: $themeBorder_radius;
     // background: #fff;
@@ -547,7 +547,6 @@ section {
     @media all and (min-width: $md-min) {
       padding: 3rem;
       max-width: 80%;
-      opacity: 0.8;
     }
     @media all and (min-width: $xl-min) {
       max-width: 65%;
@@ -1053,7 +1052,7 @@ section {
       }
       img {
         display: inline;
-        margin: 0 0.6rem 0 0.2rem;
+        margin: 0 0.6rem 0 0;
         &.react_logo {
           max-width: 4.7rem;
         }

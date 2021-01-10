@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import monstera_lighter from "../../images/monstera_lighter.jpg";
 import { client } from "../../client";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import leaves_small from "../../images/leaves_small.jpg";
 
 const Home = () => {
-  // const [skillItems, setSkillItems] = useState(null);
+  const [skillItems, setSkillItems] = useState(null);
   const [aboutData, setAboutData] = useState(null);
 
   useEffect(() => {
@@ -17,28 +19,18 @@ const Home = () => {
       })
       .catch((error) => console.log("error", error));
   }, []);
-
-  // useEffect(() => {
-  //   const { heading, text, content } = aboutData.fields;
-  // }, [aboutData]);
-
-  // useEffect(() => {
-  //   //GROQ sanity query language
-  //   sanityClient
-  //     .fetch(
-  //       `*[_type=="skill"] | order(sortNumber){
-  //         title,
-  //         icon,
-  //         content,
-  //         sortNumber
-  //   }`
-  //     )
-  //     .then((response) => {
-  //       //console.log("response-skillItems", response);
-  //       setSkillItems(response);
-  //     })
-  //     .catch((error) => console.log("error", error));
-  // }, []);
+  useEffect(() => {
+    client
+      .getEntries({
+        content_type: "skill",
+        order: "fields.sortNumber",
+      })
+      .then((response) => {
+        console.log("response_skill", response.items);
+        setSkillItems(response.items);
+      })
+      .catch((error) => console.log("error", error));
+  }, []);
 
   return (
     <main className="home">
@@ -72,13 +64,9 @@ const Home = () => {
           <div className="col-12">
             <div className="home_text">
               <h2 className="section-heading text-center cursive">About Me</h2>
-              {aboutData ? (
-                <div>
-                  {aboutData.fields.content.content[0].content[0].value}
-                </div>
-              ) : (
-                ""
-              )}
+              {aboutData
+                ? documentToReactComponents(aboutData.fields.aboutContent)
+                : ""}
             </div>
           </div>
         </div>
@@ -91,7 +79,36 @@ const Home = () => {
               <section className="boxes">
                 <h2 className="section-heading text-center cursive">Skills</h2>
 
-                <div className="boxes-inner"></div>
+                <div className="boxes-inner">
+                  {skillItems &&
+                    skillItems.map((entry, index) => {
+                      return (
+                        <div
+                          className="box"
+                          style={{ background: `url(${leaves_small})` }}
+                          key={index}
+                        >
+                          <div className="text-part-outer">
+                            <div className="text-part-inner">
+                              <i
+                                className={`fas fa-${entry.fields.icon} boxes-icon`}
+                              ></i>
+                              <i
+                                className={`fab fa-${entry.fields.icon} boxes-icon`}
+                              ></i>
+
+                              <h3 className="heading"> {entry.fields.title}</h3>
+                              <div className="text">
+                                {documentToReactComponents(
+                                  entry.fields.content
+                                )}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                </div>
               </section>
             </div>
           </div>
