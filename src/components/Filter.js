@@ -8,7 +8,7 @@ export const Filter = ({ displayItems, activeFilter }) => {
     let updatedFilter = [...filter];
     //sets chosen input to checked/unchecked
     updatedFilter.map((item) => {
-      if (item.id == event.target.id) {
+      if ("" + item.id === event.target.id) {
         item.isChecked = event.target.checked;
       }
       return item;

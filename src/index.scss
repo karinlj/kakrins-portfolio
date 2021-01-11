@@ -146,8 +146,8 @@ section {
         letter-spacing: 0.1em;
         font-weight: 700;
         &:hover {
-          filter: brightness(80%);
-          -webkit-filter: brightness(80%);
+          filter: brightness(85%);
+          -webkit-filter: brightness(85%);
           transition: all 1s ease;
           border: none;
           text-decoration: none;
@@ -530,7 +530,7 @@ section {
       right: 0;
       bottom: 0;
       left: 0;
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.5);
       content: "";
       display: block;
       border-radius: $themeBorder_radius;
@@ -570,8 +570,6 @@ section {
    skills boxes
 ***********************/
   .skills_section {
-    padding: 2rem 0;
-
     h2 {
       font-size: 3rem;
       margin-bottom: 2rem;
@@ -635,15 +633,15 @@ section {
             right: 0;
             bottom: 0;
             left: 0;
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.1);
             content: "";
             display: block;
             z-index: 0;
           }
         }
         &:hover {
-          filter: brightness(80%);
-          -webkit-filter: brightness(80%);
+          filter: brightness(85%);
+          -webkit-filter: brightness(85%);
           transition: all 1s ease;
         }
         img {
@@ -736,6 +734,7 @@ section {
     bottom: 0;
     right: 0;
     z-index: 20;
+    opacity: 0;
   }
   a {
     text-decoration: none;
@@ -958,6 +957,7 @@ section {
    footer
 *********************/
 .footer-main {
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -1007,8 +1007,8 @@ section {
         color: $linkcolor;
         font-size: 0.9em;
         &:hover {
-          filter: brightness(80%);
-          -webkit-filter: brightness(80%);
+          filter: brightness(85%);
+          -webkit-filter: brightness(85%);
           transition: all 1s ease;
           text-decoration: none;
         }
@@ -1044,8 +1044,8 @@ section {
       a {
         color: $linkcolor;
         &:hover {
-          filter: brightness(80%);
-          -webkit-filter: brightness(80%);
+          filter: brightness(85%);
+          -webkit-filter: brightness(85%);
           transition: all 1s ease;
           text-decoration: none;
         }

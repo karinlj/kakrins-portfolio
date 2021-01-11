@@ -47,7 +47,7 @@ const Projects = () => {
       })
 
       .then((response) => {
-        // console.log("response_projects", response.items);
+        //console.log("response_projects", response.items);
         setProjects(response.items);
       })
       .catch((error) => console.log("error", error));
@@ -75,7 +75,7 @@ const Projects = () => {
                   project.fields.techniques,
                   checkedTecniqueNames
                 ).length > 0 ? (
-                  <SingleProject project={project} key={index} />
+                  <SingleProject project={project} key={project.sys.id} />
                 ) : null;
               })}
           </div>

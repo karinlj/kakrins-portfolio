@@ -20,7 +20,9 @@ const SingleProject = ({ project }) => {
           target="_blank"
           rel="noopener noreferrer"
           className="project-link"
-        ></a>
+        >
+          link
+        </a>
         <div className="featured_image">
           <img src={image.fields.file.url} alt={image.fields.file.title} />
         </div>

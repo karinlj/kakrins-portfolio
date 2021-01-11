@@ -3,6 +3,7 @@ import monstera_lighter from "../../images/monstera_lighter.jpg";
 import { client } from "../../client";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import leaves_small from "../../images/leaves_small.jpg";
+import Accordion from "../Accordion";
 
 const Home = () => {
   const [skillItems, setSkillItems] = useState(null);
@@ -86,7 +87,7 @@ const Home = () => {
                         <div
                           className="box"
                           style={{ background: `url(${leaves_small})` }}
-                          key={index}
+                          key={entry.sys.id}
                         >
                           <div className="text-part-outer">
                             <div className="text-part-inner">
