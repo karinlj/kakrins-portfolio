@@ -9,6 +9,7 @@ const SingleProject = ({ project }) => {
     releaseDate,
     techniques,
     description,
+    acknowledgement,
   } = project.fields;
 
   return (
@@ -49,6 +50,16 @@ const SingleProject = ({ project }) => {
                 );
               })}
             </div>
+            {acknowledgement ? (
+              <div className="acknowledgement">
+                <span>
+                  <strong className="font_bold">Thanks to: </strong>
+                </span>
+                {acknowledgement}
+              </div>
+            ) : (
+              ""
+            )}
           </div>
           <p className="description">{description}</p>
         </div>

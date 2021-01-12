@@ -19,7 +19,7 @@ const Footer = () => {
                     className="react_logo"
                   />
                 </a>
-                and
+                &amp;
                 <a href="https://www.contentful.com/">
                   <img
                     src={contentful_logo_small}

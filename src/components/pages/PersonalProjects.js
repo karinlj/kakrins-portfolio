@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { client } from "../../client";
 import { Filter } from "../Filter";
 import Header from "../layout/Header";
+import SingleProject from "../SingleProject";
 
 const PersonalProjects = () => {
   const [projects, setProjects] = useState(null);
@@ -37,15 +38,11 @@ const PersonalProjects = () => {
         order: "-fields.releaseDate",
       })
       .then((response) => {
-        console.log("response_personalProject", response.items);
+        //  console.log("response_personalProject", response.items);
         setProjects(response.items);
       })
       .catch((error) => console.log("error", error));
   }, []);
-
-  useEffect(() => {
-    //console.log("projects", projects);
-  }, [projects]);
 
   useEffect(() => {
     // console.log("personal_checkedTecniqueNames", checkedTecniqueNames);
@@ -70,77 +67,7 @@ const PersonalProjects = () => {
                   project.fields.techniques,
                   checkedTecniqueNames
                 ).length > 0 ? (
-                  <div
-                    className="col-12 col-md-6 col-lg-4"
-                    key={project.sys.id}
-                  >
-                    <article className="project">
-                      <a
-                        href={project.fields.link}
-                        alt={project.fields.title}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="project-link"
-                      >
-                        {""}
-                      </a>
-                      <div className="featured_image">
-                        <img
-                          src={project.fields.image.fields.file.url}
-                          alt={project.fields.image.fields.file.title}
-                        />
-                      </div>
-                      <div className="content_container">
-                        <h4 className="title">{project.fields.title}</h4>
-
-                        <div className="small_text">
-                          <div className="date">
-                            <span>
-                              <strong className="font_bold">
-                                Finished on:{" "}
-                              </strong>
-                            </span>
-
-                            {new Date(
-                              project.fields.releaseDate
-                            ).toLocaleDateString()}
-                          </div>
-
-                          <div className="techniques">
-                            <span>
-                              <strong className="font_bold">
-                                Techniques:{" "}
-                              </strong>
-                            </span>
-
-                            {project.fields.techniques.map(
-                              (technique, index) => {
-                                return (
-                                  <div key={index} className="technique">
-                                    {technique}
-                                    {index ===
-                                    project.fields.techniques.length - 1
-                                      ? ""
-                                      : ","}
-                                  </div>
-                                );
-                              }
-                            )}
-                          </div>
-                          <div className="date">
-                            <span>
-                              <strong className="font_bold">Thanks to: </strong>
-                            </span>
-                            {project.fields.acknowledgement}
-                          </div>
-                        </div>
-
-                        <p className="description">
-                          {project.fields.description}
-                        </p>
-                      </div>
-                    </article>
-                  </div>
+                  <SingleProject project={project} key={project.sys.id} />
                 ) : (
                   ""
                 );

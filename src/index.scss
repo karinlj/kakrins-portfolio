@@ -537,7 +537,7 @@ section {
     }
   }
   .home_text {
-    max-width: 70%;
+    // max-width: 70%;
     margin: 0 auto;
     // opacity: 0.95;
     // border-radius: $themeBorder_radius;
@@ -546,6 +546,9 @@ section {
 
     @media all and (min-width: $md-min) {
       padding: 3rem;
+      max-width: 75%;
+    }
+    @media all and (min-width: $lg-min) {
       max-width: 80%;
     }
     @media all and (min-width: $xl-min) {
@@ -853,10 +856,8 @@ section {
     }
   }
 }
-.workItems,
-.schoolItems {
-  .workItem,
-  .schoolItem {
+.curriculumItems {
+  .curriculumItem {
     position: relative;
     width: 100%;
     padding: 0.5rem 0;
@@ -875,13 +876,15 @@ section {
         }
       }
     }
-    .date {
+    .date,
+    .acknowledgement {
       display: block;
       padding: 0.2rem 0 0.5rem 0;
       // color: #cffcef;
       color: #c1d7a8;
       font-size: 0.8rem;
     }
+    //sitelist
     .sites {
       padding: 0.5rem 0;
       color: #fff;

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Header from "../layout/Header";
-import Accordion from "../Accordion";
 import { client } from "../../client";
 import monstera_vertical_big from "../../images/monstera_vertical_big.jpg";
+import CurriculumSection from "../CurriculumSection";
 
 const Curriculum = () => {
   const [workItems, setWorkItems] = useState(null);
@@ -15,9 +15,8 @@ const Curriculum = () => {
         content_type: "workItem",
         order: "-fields.sortDate",
       })
-
       .then((response) => {
-        console.log("response_workItem", response.items);
+        //console.log("response_workItem", response.items);
         setWorkItems(response.items);
       })
       .catch((error) => console.log("error", error));
@@ -30,7 +29,6 @@ const Curriculum = () => {
         content_type: "schoolItem",
         order: "-fields.sortDate",
       })
-
       .then((response) => {
         // console.log("response_schoolItems", response.items);
         setSchoolItems(response.items);
@@ -45,7 +43,7 @@ const Curriculum = () => {
       <div className="container">
         <div className="row">
           <div className="col-12">
-            {/* education */}
+            {/* Work Experience */}
             <div
               className="bg_wrapper"
               style={{ background: `url(${monstera_vertical_big})` }}
@@ -54,56 +52,20 @@ const Curriculum = () => {
                 {/* <h2 className="cursive text-center">Work Experience</h2> */}
                 <Header heading="Work Experience" />
 
-                <section className="workItems">
+                <section className="curriculumItems">
                   <div className="container">
                     <div className="row">
-                      {workItems &&
-                        workItems.map((workItem) => {
-                          return (
-                            <article className="workItem" key={workItem.sys.id}>
-                              <h4>
-                                <a
-                                  href={workItem.fields.titleLink}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                >
-                                  {workItem.fields.title}
-                                  {""}
-                                </a>
-                              </h4>
-                              <div className="small_text">
-                                <span className="date">
-                                  {workItem.fields.date}{" "}
-                                </span>
-                              </div>
-                              <div className="description">
-                                <p>{workItem.fields.description} </p>
-                              </div>
-                              <div className="sites">
-                                <ul>
-                                  {workItem.fields.siteList &&
-                                    workItem.fields.siteList.map(
-                                      (site, index) => {
-                                        return (
-                                          <li key={index}>
-                                            <a
-                                              href={site}
-                                              alt={site}
-                                              target="_blank"
-                                              rel="noopener noreferrer"
-                                            >
-                                              {site}
-                                              {""}
-                                            </a>
-                                          </li>
-                                        );
-                                      }
-                                    )}
-                                </ul>
-                              </div>
-                            </article>
-                          );
-                        })}
+                      <div className="col-12">
+                        {workItems &&
+                          workItems.map((entry) => {
+                            return (
+                              <CurriculumSection
+                                entry={entry}
+                                key={entry.sys.id}
+                              />
+                            );
+                          })}
+                      </div>
                     </div>
                   </div>
                 </section>
@@ -118,49 +80,20 @@ const Curriculum = () => {
                 <Header heading="Education" />
                 {/* <h2 className="cursive text-center">Education</h2> */}
 
-                <section className="schoolItems">
+                <section className="curriculumItems">
                   <div className="container">
                     <div className="row">
-                      {schoolItems &&
-                        schoolItems.map((schoolItem, index) => {
-                          return (
-                            <article className="schoolItem" key={index}>
-                              <h4>
-                                <a
-                                  href={schoolItem.fields.titleLink}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                >
-                                  {schoolItem.fields.title}
-                                </a>
-                              </h4>
-                              <div className="small_text">
-                                <span className="date">
-                                  {schoolItem.fields.date}{" "}
-                                </span>
-                              </div>
-                              <div className="description">
-                                <p>{schoolItem.fields.description} </p>
-                              </div>
-                              {/* course_items accordion */}
-                              <section className="course_items">
-                                {schoolItem.fields.subItemList &&
-                                  schoolItem.fields.subItemList.map(
-                                    (item, i) => {
-                                      return (
-                                        <Accordion
-                                          //key should be here in big comp
-                                          key={i}
-                                          heading={item.heading}
-                                          content={item.content}
-                                        />
-                                      );
-                                    }
-                                  )}
-                              </section>
-                            </article>
-                          );
-                        })}
+                      <div className="col-12">
+                        {schoolItems &&
+                          schoolItems.map((entry, index) => {
+                            return (
+                              <CurriculumSection
+                                entry={entry}
+                                key={entry.sys.id}
+                              />
+                            );
+                          })}
+                      </div>
                     </div>
                   </div>
                 </section>

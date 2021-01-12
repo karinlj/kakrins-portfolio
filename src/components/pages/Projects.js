@@ -45,7 +45,6 @@ const Projects = () => {
         order: "-fields.releaseDate",
         // order: "-sys.createdAt",
       })
-
       .then((response) => {
         //console.log("response_projects", response.items);
         setProjects(response.items);

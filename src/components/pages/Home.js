@@ -3,7 +3,6 @@ import monstera_lighter from "../../images/monstera_lighter.jpg";
 import { client } from "../../client";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import leaves_small from "../../images/leaves_small.jpg";
-import Accordion from "../Accordion";
 
 const Home = () => {
   const [skillItems, setSkillItems] = useState(null);
@@ -15,7 +14,7 @@ const Home = () => {
         content_type: "aboutData",
       })
       .then((response) => {
-        console.log("response_aboutData", response.items[0]);
+        // console.log("response_aboutData", response.items[0]);
         setAboutData(response.items[0]);
       })
       .catch((error) => console.log("error", error));
@@ -27,7 +26,7 @@ const Home = () => {
         order: "fields.sortNumber",
       })
       .then((response) => {
-        console.log("response_skill", response.items);
+        // console.log("response_skill", response.items);
         setSkillItems(response.items);
       })
       .catch((error) => console.log("error", error));
