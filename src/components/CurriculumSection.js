@@ -26,40 +26,39 @@ function CurriculumSection({ entry }) {
       <div className="description">
         <p>{description} </p>
       </div>
-      <div className="sites">
-        <ul>
-          {siteList &&
-            siteList.map((site, index) => {
-              return (
-                <li key={index}>
-                  <a
-                    href={site}
-                    alt={site}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {site}
-                    {""}
-                  </a>
-                </li>
-              );
-            })}
-        </ul>
-      </div>
+      {siteList &&
+        siteList.map((site, index) => {
+          return (
+            // <div className="sites">
+            <div className="site" key={index}>
+              <a
+                href={site}
+                alt={site}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {site}
+                {""}
+              </a>
+            </div>
+            // </div>
+          );
+        })}
+
       {/* course_items accordion */}
-      <section className="course_items">
-        {subItemList &&
-          subItemList.map((item, i) => {
-            return (
+      {subItemList &&
+        subItemList.map((item, i) => {
+          return (
+            <section className="course_items">
               <Accordion
                 //key should be here in big comp
                 key={i}
                 heading={item.heading}
                 content={item.content}
               />
-            );
-          })}
-      </section>
+            </section>
+          );
+        })}
     </article>
   );
 }

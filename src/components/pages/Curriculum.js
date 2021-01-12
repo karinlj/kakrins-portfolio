@@ -46,7 +46,7 @@ const Curriculum = () => {
             {/* Work Experience */}
             <div
               className="bg_wrapper"
-              style={{ background: `url(${monstera_vertical_big})` }}
+              //style={{ background: `url(${monstera_vertical_big})` }}
             >
               <div className="wrapper">
                 {/* <h2 className="cursive text-center">Work Experience</h2> */}
@@ -74,7 +74,7 @@ const Curriculum = () => {
             {/* education */}
             <div
               className="bg_wrapper"
-              style={{ background: `url(${monstera_vertical_big})` }}
+              //style={{ background: `url(${monstera_vertical_big})` }}
             >
               <div className="wrapper">
                 <Header heading="Education" />

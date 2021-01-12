@@ -827,11 +827,14 @@ section {
   }
   h1 {
     color: #e6efdc;
+    color: $linkcolor;
   }
   .bg_wrapper {
     position: relative;
-    padding: 3rem 0;
+    padding: 3rem 0 5rem 0;
+    background: $lightgrey;
     background: $dark_green_bg;
+
     margin-bottom: 3rem;
     border-radius: $themeBorder_radius;
     .wrapper {
@@ -860,10 +863,11 @@ section {
   .curriculumItem {
     position: relative;
     width: 100%;
-    padding: 0.5rem 0;
+    padding: 0.7rem 0;
     a,
     li {
       color: #fff;
+      //color: $themeHeadingcolor;
     }
     h4 {
       font-size: 1rem;
@@ -871,13 +875,15 @@ section {
       margin-bottom: 0rem;
       a {
         &:hover {
+          filter: brightness(85%);
+          -webkit-filter: brightness(85%);
+          transition: all 1s ease;
           text-decoration: none;
           color: inherit;
         }
       }
     }
-    .date,
-    .acknowledgement {
+    .date {
       display: block;
       padding: 0.2rem 0 0.5rem 0;
       // color: #cffcef;
@@ -885,29 +891,30 @@ section {
       font-size: 0.8rem;
     }
     //sitelist
-    .sites {
-      padding: 0.5rem 0;
+    .site {
       color: #fff;
       font-weight: 500;
       font-size: 0.8rem;
       letter-spacing: 0.5px;
-      ul {
-        margin-bottom: 0;
-        a {
-          display: block;
-          margin-bottom: 0.3rem;
-          &:hover {
-            text-decoration: none;
-            // color: #cffcef;
-            color: #c1d7a8;
-          }
+
+      a {
+        display: block;
+        margin-bottom: 0.3rem;
+        color: $linkcolor;
+        &:hover {
+          filter: brightness(85%);
+          -webkit-filter: brightness(85%);
+          transition: all 1s ease;
+          text-decoration: none;
+          // color: #cffcef;
+          // color: #c1d7a8;
         }
       }
     }
     //accordion
     .accordion {
-      padding: 1rem;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+      padding: 0.5rem;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
       margin: 1rem auto;
       border-radius: $themeBorder_radius;
       .heading {
