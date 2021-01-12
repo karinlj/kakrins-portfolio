@@ -37,7 +37,7 @@ const Projects = () => {
     // );
   }, [checkedTecniqueNames]);
 
-  //get data from contentful
+  //get project from contentful
   useEffect(() => {
     client
       .getEntries({
