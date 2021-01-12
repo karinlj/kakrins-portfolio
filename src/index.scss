@@ -826,15 +826,14 @@ section {
     color: #fff;
   }
   h1 {
-    color: #e6efdc;
+    //color: #e6efdc;
     color: $linkcolor;
   }
   .bg_wrapper {
     position: relative;
     padding: 3rem 0 5rem 0;
-    background: $lightgrey;
+    // background: $lightgrey;
     background: $dark_green_bg;
-
     margin-bottom: 3rem;
     border-radius: $themeBorder_radius;
     .wrapper {
