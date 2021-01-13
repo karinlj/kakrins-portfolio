@@ -24,19 +24,18 @@ $themeBox_shadow: 0 7px 34px 0 rgba(0, 0, 0, 0.07),
 
 /* colors */
 $themeBorderColor: #ebebeb;
-
 $themecolor: #404159;
 $themeHeadingcolor: rgba(43, 44, 59, 0.9); // #2b2c3b;
+$themeLightHeadingcolor: #e6efdc; //  #d1fae5;
 
 $lightgrey: #fafafb;
 $themecolorBlue: #1f7bad;
 $themecolorBlueLight: linear-gradient(40deg, #1f7bad 20%, #6caec6);
 
-//new
-$red: #dc2626;
 $dark_green_bg: linear-gradient(40deg, #054735 20%, #0a8f69);
+$dark_green_bg: linear-gradient(to right bottom, #054735, #0a8f69);
 
-$linkcolor: #ff66b3;
+$linkcolor: #ff4da6;
 //#ff4da6; //#2196f3; //#2e9ce6;
 
 /*transparent nav*/
