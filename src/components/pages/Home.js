@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import monstera_lighter from "../../images/monstera_lighter.jpg";
+import monstera_lighter_s from "../../images/monstera_lighter_s.jpg";
 import { client } from "../../client";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import leaves_small from "../../images/leaves_small.jpg";
@@ -40,7 +40,7 @@ const Home = () => {
             <div
               className="home_img_wrapper"
               style={{
-                background: `url(${monstera_lighter})`,
+                background: `url(${monstera_lighter_s})`,
               }}
             >
               <section className="heading_box">

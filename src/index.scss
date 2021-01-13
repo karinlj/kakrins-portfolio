@@ -314,7 +314,7 @@ section {
       background: $themedarkgrey;
       opacity: 0.95;
       padding: 0 10%;
-      padding-top: 60px;
+      padding-top: 40px;
       text-align: left;
       transition: transform 0.6s ease;
       //100% away
@@ -827,7 +827,8 @@ section {
   }
   h1 {
     //color: #e6efdc;
-    color: $linkcolor;
+    color: #ff3399;
+    //$linkcolor;
   }
   .bg_wrapper {
     position: relative;
@@ -899,7 +900,8 @@ section {
       a {
         display: block;
         margin-bottom: 0.3rem;
-        color: $linkcolor;
+        color: #ff3399;
+        //$linkcolor;
         &:hover {
           filter: brightness(85%);
           -webkit-filter: brightness(85%);
@@ -955,7 +957,7 @@ section {
         }
         .content {
           opacity: 1;
-          max-height: 200px;
+          max-height: 350px;
         }
       }
     }

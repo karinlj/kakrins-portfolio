@@ -8,7 +8,7 @@ const Footer = () => {
     <footer className="footer-main" id="contact">
       <div className="container">
         <div className="row justify-content-between">
-          <div className="col-8">
+          <div className="col-6 col-sm-9">
             <section className="logo_section">
               <h5>Powered by</h5>
               <div className="powered_by">
@@ -19,7 +19,7 @@ const Footer = () => {
                     className="react_logo"
                   />
                 </a>
-                &amp;
+                &amp; &nbsp;
                 <a href="https://www.contentful.com/">
                   <img
                     src={contentful_logo_small}
@@ -30,7 +30,7 @@ const Footer = () => {
               </div>
             </section>
           </div>
-          <div className="col-4">
+          <div className="col-6 col-sm-3">
             <div className="back">
               <a href="#nav">To top</a>
             </div>
