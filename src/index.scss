@@ -141,9 +141,10 @@ section {
     }
     .home_link {
       a {
-        font-size: 2.7rem;
+        font-size: 2.8rem;
         color: $linkcolor !important;
         letter-spacing: 0.1em;
+
         font-weight: 700;
         &:hover {
           filter: brightness(85%);
@@ -220,7 +221,7 @@ section {
           li.social_item {
             a {
               font-size: 1.4rem;
-              margin-left: 2rem;
+              margin-left: 1.9rem;
               color: #ff66b3 !important;
               &:hover {
                 filter: brightness(80%);
@@ -812,7 +813,6 @@ section {
 }
 //curriculum
 .curriculum {
-  h1,
   h2,
   h3,
   h4,
@@ -821,9 +821,7 @@ section {
   p {
     color: #fff;
   }
-  h1,
-  h4 {
-    color: #ff3399;
+  h1 {
     color: $themeLightHeadingcolor;
   }
   .bg_wrapper {
@@ -843,16 +841,17 @@ section {
         margin: 0 auto 0 auto;
       }
     }
-    &::before {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      background: rgba(0, 0, 0, 0.1);
-      content: "";
-      display: block;
-    }
+    //if bg image:
+    // &::before {
+    //   position: absolute;
+    //   top: 0;
+    //   right: 0;
+    //   bottom: 0;
+    //   left: 0;
+    //   background: rgba(0, 0, 0, 0.1);
+    //   content: "";
+    //   display: block;
+    // }
   }
 }
 .curriculumItems {
@@ -863,26 +862,25 @@ section {
     a,
     li {
       color: #fff;
-      //color: $themeHeadingcolor;
     }
     h4 {
       font-size: 1rem;
       letter-spacing: 0.8px;
       margin-bottom: 0rem;
       a {
+        cursor: pointer;
         &:hover {
-          filter: brightness(85%);
-          -webkit-filter: brightness(85%);
+          // filter: brightness(85%);
+          // -webkit-filter: brightness(85%);
           transition: all 1s ease;
           text-decoration: none;
-          color: inherit;
+          color: $linkcolor;
         }
       }
     }
     .date {
       display: block;
       padding: 0.2rem 0 0.5rem 0;
-      // color: #cffcef;
       color: #c1d7a8;
       font-size: 0.8rem;
     }
@@ -896,27 +894,13 @@ section {
       a {
         position: relative;
         display: inline-block;
-        margin-bottom: 0.5rem;
-        padding-bottom: 0.1rem;
+        margin-bottom: 0.3rem;
         color: #fff;
 
         &:hover {
-          filter: brightness(85%);
-          -webkit-filter: brightness(85%);
-          transition: all 1s ease;
+          color: $linkcolor;
+          transition: all 0.5s ease;
           text-decoration: none;
-        }
-        &:before {
-          background: $linkcolor;
-          opacity: 0.9;
-          position: absolute;
-          bottom: 0;
-          left: 1px;
-          content: "";
-          width: 100%;
-          height: 2px;
-          // -webkit-transition: width 0.2s ease-in;
-          // transition: width 0.2s ease-in;
         }
       }
     }
@@ -943,11 +927,14 @@ section {
           font-size: 1.1rem;
           margin-left: 0.5rem;
           height: 1rem;
+          &:hover {
+            filter: brightness(85%);
+            -webkit-filter: brightness(85%);
+          }
         }
       }
       .content {
         margin-bottom: 0;
-        // padding: 0rem 1rem;
         padding: 0rem 1rem 0rem 2rem;
         font-size: 90%;
         max-height: 0;

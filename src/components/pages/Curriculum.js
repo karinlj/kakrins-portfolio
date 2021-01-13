@@ -38,8 +38,6 @@ const Curriculum = () => {
 
   return (
     <main className="curriculum">
-      {/* <Header heading="Curriculum" subHeading="Some of my experiences." /> */}
-
       <div className="container">
         <div className="row">
           <div className="col-12">
@@ -49,9 +47,7 @@ const Curriculum = () => {
               //style={{ background: `url(${monstera_vertical_big})` }}
             >
               <div className="wrapper">
-                {/* <h2 className="cursive text-center">Work Experience</h2> */}
                 <Header heading="Work Experience" />
-
                 <section className="curriculumItems">
                   <div className="container">
                     <div className="row">
@@ -78,8 +74,6 @@ const Curriculum = () => {
             >
               <div className="wrapper">
                 <Header heading="Education" />
-                {/* <h2 className="cursive text-center">Education</h2> */}
-
                 <section className="curriculumItems">
                   <div className="container">
                     <div className="row">
