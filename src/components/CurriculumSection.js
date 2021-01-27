@@ -2,7 +2,6 @@ import React from "react";
 import Accordion from "./Accordion";
 
 function CurriculumSection({ entry }) {
-  // console.log("entry_CurriculumSection", entry);
   const {
     title,
     titleLink,

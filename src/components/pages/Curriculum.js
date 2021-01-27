@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Header from "../layout/Header";
 import { client } from "../../client";
-import monstera_vertical_big from "../../images/monstera_vertical_big.jpg";
 import CurriculumSection from "../CurriculumSection";
 
 const Curriculum = () => {
@@ -42,10 +41,7 @@ const Curriculum = () => {
         <div className="row">
           <div className="col-12">
             {/* Work Experience */}
-            <div
-              className="bg_wrapper"
-              //style={{ background: `url(${monstera_vertical_big})` }}
-            >
+            <div className="bg_wrapper">
               <div className="wrapper">
                 <Header heading="Work Experience" />
                 <section className="curriculumItems">
@@ -68,10 +64,7 @@ const Curriculum = () => {
               </div>
             </div>
             {/* education */}
-            <div
-              className="bg_wrapper"
-              //style={{ background: `url(${monstera_vertical_big})` }}
-            >
+            <div className="bg_wrapper">
               <div className="wrapper">
                 <Header heading="Education" />
                 <section className="curriculumItems">
