@@ -1060,10 +1060,12 @@ section {
         display: inline;
         margin: 0 0.6rem 0 0;
         &.react_logo {
-          max-width: 4.7rem;
+          width: 4.7rem;
+          height: auto;
         }
         &.contentful_logo {
-          max-width: 8rem;
+          width: 8rem;
+          height: auto;
         }
       }
       .sanity {
