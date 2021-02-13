@@ -14,6 +14,7 @@ const Projects = () => {
     { id: 2, name: "reactjs", isChecked: true },
     { id: 3, name: "wordpress", isChecked: true },
     { id: 4, name: "angular1", isChecked: true },
+    { id: 5, name: "sass", isChecked: true },
   ];
 
   //functon with names of checked items as parameter from 'litte' comp
