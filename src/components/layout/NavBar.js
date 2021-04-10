@@ -23,6 +23,11 @@ const NavBar = () => {
     }
   };
 
+  //prevent scroll when mobile menu is open
+  useEffect(() => {
+    document.body.classList.toggle("no_scroll", mobileOpen);
+  }, [mobileOpen]);
+
   useEffect(() => {
     // console.log("mobileOpen_NavBar", mobileOpen);
     // console.log("btnClicked_NavBar", btnClicked);

@@ -5,6 +5,9 @@
 body {
   font-family: "Roboto", "Helvetica", sans-serif;
 }
+body.no_scroll {
+  overflow: hidden;
+}
 h1,
 h2,
 h3,
@@ -17,37 +20,29 @@ h6 {
 h1 {
   font-size: 2.3rem;
   font-weight: 500;
-
   @media all and (min-width: $md-min) {
     font-size: 2.8rem;
   }
-
   @media all and (min-width: $lg-min) {
     font-size: 3.3rem;
   }
-
   @media all and (min-width: $xl-min) {
     font-size: 3.5rem;
   }
 }
-
 h2 {
   font-size: 2rem;
   font-weight: 700;
   line-height: 1.2;
-
   @media all and (min-width: $sm-min) {
     font-size: 2.1rem;
   }
-
   @media all and (min-width: $md-min) {
     font-size: 2.2rem;
   }
-
   @media all and (min-width: $lg-min) {
     font-size: 2.3rem;
   }
-
   @media all and (min-width: $xl-min) {
     font-size: 2.4rem;
   }
@@ -57,11 +52,9 @@ h3 {
   font-size: 1.2rem;
   font-weight: 700;
   line-height: 1.4;
-
   @media all and (min-width: $sm-min) {
     font-size: 1.3rem;
   }
-
   @media all and (min-width: $xl-min) {
     font-size: 1.4rem;
   }
@@ -69,12 +62,9 @@ h3 {
 
 h4 {
   font-size: 1.15rem;
-  //font-weight: 400;
-
   @media all and (min-width: $lg-min) {
     font-size: 1.25rem;
   }
-
   @media all and (min-width: $xl-min) {
     font-size: 1.35rem;
   }
@@ -82,12 +72,9 @@ h4 {
 
 h5 {
   font-size: 1.1rem;
-  //font-weight: 400;
-
   @media all and (min-width: $md-min) {
     font-size: 1.1rem;
   }
-
   @media all and (min-width: $xl-min) {
     font-size: 1.2rem;
   }
@@ -95,7 +82,6 @@ h5 {
 
 p {
   font-size: 1rem;
-
   @media all and (min-width: $lg-min) {
     font-size: 1.1rem;
   }
@@ -106,7 +92,6 @@ section {
     // line-height: 1.6;
     line-height: 1.4;
   }
-
   h2,
   h3,
   h4 {
@@ -118,7 +103,6 @@ section {
   width: 100%;
   margin: 0 auto;
 }
-
 .cursive {
   font-family: "Amatic SC", cursive;
   font-weight: 700;
@@ -128,7 +112,6 @@ section {
   background: $themedarkgrey;
   width: 100%;
   margin-bottom: 2rem;
-
   nav.navbar {
     padding: 0.5rem 0;
     flex-wrap: nowrap;
@@ -144,7 +127,6 @@ section {
         font-size: 2.7rem;
         color: $linkcolor !important;
         letter-spacing: 0.1em;
-
         font-weight: 700;
         &:hover {
           filter: brightness(85%);
@@ -176,7 +158,6 @@ section {
         }
         li.link_item {
           position: relative;
-
           a.link {
             margin: 0 1rem -2px 1rem;
             transition: all 0.5s ease;
@@ -571,7 +552,7 @@ section {
   /**********************
    skills boxes
 ***********************/
-  .skills_section {
+  .boxes_section {
     h2 {
       font-size: 3rem;
       margin-bottom: 2rem;
