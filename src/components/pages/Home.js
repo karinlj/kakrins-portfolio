@@ -26,7 +26,7 @@ const Home = () => {
         order: "fields.sortNumber",
       })
       .then((response) => {
-        // console.log("response_skill", response.items);
+        console.log("response_skill", response.items);
         setSkillItems(response.items);
       })
       .catch((error) => console.log("error", error));

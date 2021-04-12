@@ -32,6 +32,7 @@ const Projects = () => {
   };
 
   useEffect(() => {
+    //console.log("REACT_APP_SPACE_ID", process.env.REACT_APP_SPACE_ID);
     // console.log(
     //   "checkedTecniqueNames_state_project_comp",
     //   checkedTecniqueNames

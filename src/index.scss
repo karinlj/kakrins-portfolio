@@ -552,7 +552,7 @@ section {
   /**********************
    skills boxes
 ***********************/
-  .boxes_section {
+  .skills_section {
     h2 {
       font-size: 3rem;
       margin-bottom: 2rem;
@@ -561,7 +561,6 @@ section {
     .boxes-inner {
       display: flex;
       flex-direction: column;
-
       @media all and (min-width: $lg-min) {
         flex-direction: row !important;
         flex-wrap: wrap;
