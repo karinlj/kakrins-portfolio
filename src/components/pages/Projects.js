@@ -6,6 +6,7 @@ import SingleProject from "../SingleProject";
 
 const Projects = () => {
   const [projects, setProjects] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const [checkedTecniqueNames, setCheckedTecniqueNames] = useState([]);
 
@@ -32,7 +33,6 @@ const Projects = () => {
   };
 
   useEffect(() => {
-    //console.log("REACT_APP_SPACE_ID", process.env.REACT_APP_SPACE_ID);
     // console.log(
     //   "checkedTecniqueNames_state_project_comp",
     //   checkedTecniqueNames
@@ -41,6 +41,7 @@ const Projects = () => {
 
   //get project from contentful
   useEffect(() => {
+    setLoading(true);
     client
       .getEntries({
         content_type: "project",
@@ -50,8 +51,10 @@ const Projects = () => {
       .then((response) => {
         //console.log("response_projects", response.items);
         setProjects(response.items);
+        setLoading(false);
       })
       .catch((error) => console.log("error", error));
+    //eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -68,6 +71,7 @@ const Projects = () => {
           <Filter displayItems={displayItems} activeFilter={activeFilter} />
 
           <div className="row">
+            {loading && <p>Loading...</p>}
             {projects &&
               //if project.techniques includes name from checkedTecniqueNames
               projects.map((project, index) => {

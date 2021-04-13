@@ -6,6 +6,7 @@ import SingleProject from "../SingleProject";
 
 const PersonalProjects = () => {
   const [projects, setProjects] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const [checkedTecniqueNames, setCheckedTecniqueNames] = useState([]);
 
@@ -32,6 +33,7 @@ const PersonalProjects = () => {
   };
   //get personalProject from contentful
   useEffect(() => {
+    setLoading(true);
     client
       .getEntries({
         content_type: "personalProject",
@@ -40,8 +42,10 @@ const PersonalProjects = () => {
       .then((response) => {
         //  console.log("response_personalProject", response.items);
         setProjects(response.items);
+        setLoading(false);
       })
       .catch((error) => console.log("error", error));
+    //eslint-disable-next-line
   }, []);
 
   useEffect(() => {
