@@ -627,47 +627,60 @@ section {
         img {
           width: 100%;
         }
-        &:nth-of-type(odd) {
-          // sätter padding-left på vänstra sidans textfält
-          .text-part-outer {
-            @media all and (min-width: $sm-min) {
-              padding-left: 2.25rem;
-            }
-            @media all and (min-width: $md-min) {
-              padding-left: 3rem;
-            }
-            @media all and (min-width: $lg-min) {
-              padding-left: calc(3.75rem);
-              // padding-right: 5rem;
-              right: 0;
-              left: auto;
-            }
-          }
-        }
+        // &:nth-of-type(odd) {
+        //   // sätter padding-left på vänstra sidans textfält
+        //   .text-part-outer {
+        //     @media all and (min-width: $sm-min) {
+        //       padding-left: 2.25rem;
+        //     }
+        //     @media all and (min-width: $md-min) {
+        //       padding-left: 3rem;
+        //     }
+        //     @media all and (min-width: $lg-min) {
+        //       padding-left: calc(3.75rem);
+        //       //padding-right: 5rem;
+        //       right: 0;
+        //       left: auto;
+        //     }
+        //   }
+        // }
 
-        &:nth-of-type(even) {
-          // sätter padding-right på högra sidans textfält
-          .text-part-outer {
-            @media all and (min-width: $sm-min) {
-              padding-right: 2.25rem;
-            }
-            @media all and (min-width: $md-min) {
-              padding-right: 3rem;
-            }
-            @media all and (min-width: $lg-min) {
-              padding-right: calc(2.25rem + 15px);
-              padding-left: 5rem;
-              left: 0;
-              right: auto;
-            }
-          }
-        }
+        // &:nth-of-type(even) {
+        //   // sätter padding-right på högra sidans textfält
+        //   .text-part-outer {
+        //     @media all and (min-width: $sm-min) {
+        //       padding-right: 2.25rem;
+        //     }
+        //     @media all and (min-width: $md-min) {
+        //       padding-right: 3rem;
+        //     }
+        //     @media all and (min-width: $lg-min) {
+        //       padding-right: calc(2.25rem + 15px);
+        //       padding-left: 5rem;
+        //       left: 0;
+        //       right: auto;
+        //     }
+        //   }
+        // }
         .text-part-outer {
           //general for both sides
           position: relative;
           z-index: 10;
-          padding: 0 1.5rem;
-          max-width: calc((1380px / 2) + 2.25rem);
+          padding: 0 2rem;
+          //max-width: calc((1380px / 2) + 2.25rem);
+          max-width: 100%;
+          @media all and (min-width: $sm-min) {
+            padding: 0 2.5rem;
+          }
+          @media all and (min-width: $md-min) {
+            padding: 0 3rem;
+          }
+          @media all and (min-width: $lg-min) {
+            // padding: 0 3rem;
+          }
+          @media all and (min-width: $xl-min) {
+            padding: 0 4rem;
+          }
 
           .text-part-inner {
             // overflow: hidden;
