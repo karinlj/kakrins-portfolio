@@ -103,14 +103,14 @@ section {
   width: 100%;
   margin: 0 auto;
   @media all and (min-width: 1600px) {
-    max-width: 1300px;
-  }
-  @media all and (min-width: 1700px) {
     max-width: 1400px;
   }
-  @media all and (min-width: 2000px) {
-    max-width: 1600px;
-  }
+  // @media all and (min-width: 1700px) {
+  //   max-width: 1400px;
+  // }
+  // @media all and (min-width: 2000px) {
+  //   max-width: 1600px;
+  // }
 }
 .cursive {
   font-family: "Amatic SC", cursive;
