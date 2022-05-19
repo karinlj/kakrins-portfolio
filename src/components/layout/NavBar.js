@@ -38,12 +38,15 @@ const NavBar = () => {
       <div className="container">
         <div className="row">
           <div className="col">
-            <nav className="navbar bigscreen">
+            <nav className="navbar_bigscreen">
               <Navlinks />
               <ToggleBtn handleClick={toggleMenu} btnClicked={btnClicked} />
             </nav>
-            {/* toggle open-class */}
-            <nav className={`navbar mobile ${mobileOpen ? "open" : ""}`}>
+            <nav
+              className={`navbar_mobile ${
+                mobileOpen ? "navbar_mobile_open" : ""
+              }`}
+            >
               <Navlinks clickLink={clickLink} />
             </nav>
           </div>

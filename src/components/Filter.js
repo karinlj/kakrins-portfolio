@@ -34,6 +34,7 @@ export const Filter = ({ displayItems, activeFilter }) => {
     //  console.log("checkedItemNames_filter_comp", checkedItemNames);
     //calling  prop-function sending checked names parameter up to parent comp
     displayItems(checkedItemNames);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter]);
 
   return (

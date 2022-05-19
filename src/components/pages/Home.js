@@ -7,34 +7,42 @@ import leaves_small from "../../images/leaves_small.jpg";
 const Home = () => {
   const [skillItems, setSkillItems] = useState(null);
   const [aboutData, setAboutData] = useState(null);
+  //stop the fetch when component using it unmounts
+  const abortContrl = new AbortController();
+
+  const getAboutData = () => {
+    client
+      .getEntries({
+        content_type: "aboutData",
+        signal: abortContrl.signal,
+      })
+      .then((response) => {
+        setAboutData(response.items[0]);
+      })
+      .catch((error) => console.log("error", error));
+  };
+
+  const getSkillsItems = () => {
+    client
+      .getEntries({
+        content_type: "skill",
+        order: "fields.sortNumber",
+        signal: abortContrl.signal,
+      })
+      .then((response) => {
+        setSkillItems(response.items);
+      })
+      .catch((error) => console.log("error", error));
+  };
 
   useEffect(() => {
-    const getAboutData = () => {
-      client
-        .getEntries({
-          content_type: "aboutData",
-        })
-        .then((response) => {
-          console.log("response_aboutData: ", response.items[0]);
-          setAboutData(response.items[0]);
-        })
-        .catch((error) => console.log("error", error));
-    };
-
-    const getSkillsItems = () => {
-      client
-        .getEntries({
-          content_type: "skill",
-          order: "fields.sortNumber",
-        })
-        .then((response) => {
-          console.log("response_skill: ", response.items);
-          setSkillItems(response.items);
-        })
-        .catch((error) => console.log("error", error));
-    };
     getAboutData();
     getSkillsItems();
+    //clean up
+    return () => {
+      abortContrl.abort();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -48,7 +56,7 @@ const Home = () => {
                 background: `url(${monstera_lighter_s})`,
               }}
             >
-              <section className="heading_box">
+              <section className="heading_box_section">
                 {aboutData ? (
                   <h1 className="home_name cursive">
                     {aboutData.fields.heading}
@@ -91,8 +99,8 @@ const Home = () => {
                           style={{ background: `url(${leaves_small})` }}
                           key={entry.sys.id}
                         >
-                          <div className="text_part_outer">
-                            <div className="text_part_inner">
+                          <div className="boxes_text_part_outer">
+                            <div className="boxes_text_part_inner">
                               <i
                                 className={`fas fa-${entry.fields.icon} boxes_icon`}
                                 aria-hidden="true"

@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import SocialIcons from "../SocialIcons";
 
 const Navlinks = ({ clickLink }) => {
   return (
@@ -16,7 +17,7 @@ const Navlinks = ({ clickLink }) => {
         </NavLink>
       </div>
       <div className="nav_links">
-        <ul>
+        <ul className="nav_links_list">
           <li className="link_item">
             <NavLink
               to="/projects"
@@ -50,8 +51,10 @@ const Navlinks = ({ clickLink }) => {
             </NavLink>
           </li>
         </ul>
-        <div className="social">
-          <ul>
+        <SocialIcons />
+
+        {/* <div className="social_icons">
+          <ul className="social_items_list">
             <li className="social_item">
               <a
                 href="mailto:kaljunggren@gmail.com"
@@ -75,7 +78,7 @@ const Navlinks = ({ clickLink }) => {
               </a>
             </li>
           </ul>
-        </div>
+        </div> */}
       </div>
     </>
   );
