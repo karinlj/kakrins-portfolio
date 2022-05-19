@@ -53,18 +53,25 @@ const Navlinks = ({ clickLink }) => {
         <div className="social">
           <ul>
             <li className="social_item">
-              <a href="mailto:kaljunggren@gmail.com" target="_top">
+              <a
+                href="mailto:kaljunggren@gmail.com"
+                target="_top"
+                aria-label="Karin email"
+              >
                 <i className="fas fa-envelope" aria-hidden="true"></i>
               </a>
             </li>
             <li className="social_item">
-              <a href="https://se.linkedin.com/in/karin-ljunggren">
-                <i className="fab fa-linkedin"></i>
+              <a
+                href="https://se.linkedin.com/in/karin-ljunggren"
+                aria-label="Karin Linkedin"
+              >
+                <i className="fab fa-linkedin" aria-hidden="true"></i>
               </a>
             </li>
             <li className="social_item">
-              <a href="https://github.com/karinlj">
-                <i className="fab fa-github"></i>
+              <a href="https://github.com/karinlj" aria-label="Karin GitHub">
+                <i className="fab fa-github" aria-hidden="true"></i>
               </a>
             </li>
           </ul>

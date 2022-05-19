@@ -9,27 +9,32 @@ const Home = () => {
   const [aboutData, setAboutData] = useState(null);
 
   useEffect(() => {
-    client
-      .getEntries({
-        content_type: "aboutData",
-      })
-      .then((response) => {
-        // console.log("response_aboutData", response.items[0]);
-        setAboutData(response.items[0]);
-      })
-      .catch((error) => console.log("error", error));
-  }, []);
-  useEffect(() => {
-    client
-      .getEntries({
-        content_type: "skill",
-        order: "fields.sortNumber",
-      })
-      .then((response) => {
-        console.log("response_skill", response.items);
-        setSkillItems(response.items);
-      })
-      .catch((error) => console.log("error", error));
+    const getAboutData = () => {
+      client
+        .getEntries({
+          content_type: "aboutData",
+        })
+        .then((response) => {
+          console.log("response_aboutData: ", response.items[0]);
+          setAboutData(response.items[0]);
+        })
+        .catch((error) => console.log("error", error));
+    };
+
+    const getSkillsItems = () => {
+      client
+        .getEntries({
+          content_type: "skill",
+          order: "fields.sortNumber",
+        })
+        .then((response) => {
+          console.log("response_skill: ", response.items);
+          setSkillItems(response.items);
+        })
+        .catch((error) => console.log("error", error));
+    };
+    getAboutData();
+    getSkillsItems();
   }, []);
 
   return (
@@ -45,14 +50,12 @@ const Home = () => {
             >
               <section className="heading_box">
                 {aboutData ? (
-                  <div>
-                    <h1 className="home_name cursive">
-                      {aboutData.fields.heading}
-                    </h1>
-                    <h3 className="home_name_sub cursive">
+                  <h1 className="home_name cursive">
+                    {aboutData.fields.heading}
+                    <span className="home_name_sub cursive">
                       {aboutData.fields.text}
-                    </h3>
-                  </div>
+                    </span>
+                  </h1>
                 ) : (
                   ""
                 )}
@@ -63,7 +66,7 @@ const Home = () => {
         <div className="row">
           <div className="col-12">
             <div className="home_text">
-              <h2 className="section-heading text-center cursive">About Me</h2>
+              <h2 className="text-center cursive">About Me</h2>
               {aboutData
                 ? documentToReactComponents(aboutData.fields.aboutContent)
                 : ""}
@@ -77,9 +80,9 @@ const Home = () => {
           <div className="row">
             <div className="col-12">
               <section className="boxes">
-                <h2 className="section-heading text-center cursive">Skills</h2>
+                <h2 className="text-center cursive">Skills</h2>
 
-                <div className="boxes-inner">
+                <div className="boxes_inner">
                   {skillItems &&
                     skillItems.map((entry, index) => {
                       return (
@@ -88,15 +91,16 @@ const Home = () => {
                           style={{ background: `url(${leaves_small})` }}
                           key={entry.sys.id}
                         >
-                          <div className="text-part-outer">
-                            <div className="text-part-inner">
+                          <div className="text_part_outer">
+                            <div className="text_part_inner">
                               <i
-                                className={`fas fa-${entry.fields.icon} boxes-icon`}
+                                className={`fas fa-${entry.fields.icon} boxes_icon`}
+                                aria-hidden="true"
                               ></i>
                               <i
-                                className={`fab fa-${entry.fields.icon} boxes-icon`}
+                                className={`fab fa-${entry.fields.icon} boxes_icon`}
+                                aria-hidden="true"
                               ></i>
-
                               <h3 className="heading"> {entry.fields.title}</h3>
                               <div className="text">
                                 {documentToReactComponents(
