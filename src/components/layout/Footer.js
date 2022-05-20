@@ -40,12 +40,12 @@ const Footer = () => {
       </div>
       <div className="container lower">
         <div className="row justify-content-between align-items-end">
-          <div className="col-md-3">
+          <div className="col-lg-3">
             <div className="footer_copy">
               <p className="">© {new Date().getFullYear()}- Karin Ljunggren</p>
             </div>
           </div>
-          <div className="col-md-9">
+          <div className="col-lg-9">
             <SocialIcons footerLocation="true" />
           </div>
         </div>

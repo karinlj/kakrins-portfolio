@@ -51,7 +51,9 @@ const Navlinks = ({ clickLink }) => {
             </NavLink>
           </li>
         </ul>
-        <SocialIcons />
+        <div className="social_icons">
+          <SocialIcons />
+        </div>
 
         {/* <div className="social_icons">
           <ul className="social_items_list">
