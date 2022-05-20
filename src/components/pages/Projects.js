@@ -31,35 +31,25 @@ const Projects = () => {
       return array2.includes(element);
     });
   };
-
-  useEffect(() => {
-    // console.log(
-    //   "checkedTecniqueNames_state_project_comp",
-    //   checkedTecniqueNames
-    // );
-  }, [checkedTecniqueNames]);
-
-  //get project from contentful
-  useEffect(() => {
-    setLoading(true);
+  const getProjects = () => {
     client
       .getEntries({
         content_type: "project",
         order: "-fields.releaseDate",
-        // order: "-sys.createdAt",
       })
       .then((response) => {
-        //console.log("response_projects", response.items);
         setProjects(response.items);
         setLoading(false);
       })
       .catch((error) => console.log("error", error));
+  };
+
+  //get project from contentful
+  useEffect(() => {
+    setLoading(true);
+    getProjects();
     //eslint-disable-next-line
   }, []);
-
-  useEffect(() => {
-    //console.log("projects", projects);
-  }, [projects]);
 
   return (
     <main className="">
@@ -67,11 +57,10 @@ const Projects = () => {
 
       <section className="projects">
         <div className="container">
-          {/* Filter component */}
           <Filter displayItems={displayItems} activeFilter={activeFilter} />
 
           <div className="row">
-            {loading && <p>Loading...</p>}
+            {loading && <p className="loading">...Loading</p>}
             {projects &&
               //if project.techniques includes name from checkedTecniqueNames
               projects.map((project, index) => {

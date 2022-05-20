@@ -4,34 +4,31 @@ import ToggleBtn from "../../components/ToggleBtn";
 
 const NavBar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [btnClicked, setBtnClicked] = useState(false);
+  const [btnRotate, setBtnRotate] = useState(false);
 
   const toggleMenu = () => {
-    //click on btn -> menu toggle
+    //menu open class toggle
     setMobileOpen(!mobileOpen);
-    //click on btn -> toggle class on btn
-    setBtnClicked(!btnClicked);
+    //btn rotate class toggle
+    setBtnRotate(!btnRotate);
   };
-  //click on link -> menu closing
-  //click on link -> class changing in ToggleBtn
   const clickLink = () => {
     if (mobileOpen) {
+      //menu open class removed
       setMobileOpen(false);
     }
-    if (btnClicked) {
-      setBtnClicked(false);
+    if (btnRotate) {
+      //btn rotate class removed
+      setBtnRotate(false);
     }
   };
 
   //prevent scroll when mobile menu is open
   useEffect(() => {
-    document.body.classList.toggle("no_scroll", mobileOpen);
+    if (mobileOpen) {
+      document.body.classList.toggle("no_scroll", mobileOpen);
+    }
   }, [mobileOpen]);
-
-  useEffect(() => {
-    // console.log("mobileOpen_NavBar", mobileOpen);
-    // console.log("btnClicked_NavBar", btnClicked);
-  }, [mobileOpen, btnClicked]);
 
   return (
     <header className="nav_header" id="nav">
@@ -40,7 +37,7 @@ const NavBar = () => {
           <div className="col">
             <nav className="navbar_bigscreen">
               <Navlinks />
-              <ToggleBtn handleClick={toggleMenu} btnClicked={btnClicked} />
+              <ToggleBtn toggleMenu={toggleMenu} btnRotate={btnRotate} />
             </nav>
             <nav
               className={`navbar_mobile ${

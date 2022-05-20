@@ -7,6 +7,7 @@ import SingleProject from "../SingleProject";
 const PersonalProjects = () => {
   const [projects, setProjects] = useState(null);
   const [loading, setLoading] = useState(false);
+  const abortContrl = new AbortController();
 
   const [checkedTecniqueNames, setCheckedTecniqueNames] = useState([]);
 
@@ -18,9 +19,8 @@ const PersonalProjects = () => {
     { id: 5, name: "typescript", isChecked: true },
   ];
 
-  //functon with names of checked items as parameter from 'litte' comp
+  //functon with names of checked items as parameter
   const displayItems = (checkedItemNames) => {
-    //set state
     setCheckedTecniqueNames(checkedItemNames);
   };
 
@@ -31,26 +31,28 @@ const PersonalProjects = () => {
       return array2.includes(element);
     });
   };
-  //get personalProject from contentful
-  useEffect(() => {
-    setLoading(true);
+
+  const getPersonalProjects = () => {
     client
       .getEntries({
         content_type: "personalProject",
+        signal: abortContrl.signal,
         order: "-fields.releaseDate",
       })
       .then((response) => {
-        //  console.log("response_personalProject", response.items);
         setProjects(response.items);
         setLoading(false);
       })
       .catch((error) => console.log("error", error));
+  };
+  useEffect(() => {
+    setLoading(true);
+    getPersonalProjects();
+    return () => {
+      abortContrl.abort();
+    };
     //eslint-disable-next-line
   }, []);
-
-  useEffect(() => {
-    // console.log("personal_checkedTecniqueNames", checkedTecniqueNames);
-  }, [checkedTecniqueNames]);
 
   return (
     <main className="">
@@ -60,10 +62,10 @@ const PersonalProjects = () => {
       />
       <section className="projects">
         <div className="container">
-          {/* Filter component */}
           <Filter displayItems={displayItems} activeFilter={activeFilter} />
 
           <div className="row">
+            {loading && <p className="loading">...Loading</p>}
             {projects &&
               //if project.techniques includes name from checkedTecniqueNames
               projects.map((project) => {

@@ -20,7 +20,8 @@ const SingleProject = ({ project }) => {
           alt={title}
           target="_blank"
           rel="noopener noreferrer"
-          className="project-link"
+          className="project_link"
+          aria-label="project url or gitHub repo"
         >
           link
         </a>
@@ -28,7 +29,7 @@ const SingleProject = ({ project }) => {
           <img src={image.fields.file.url} alt={image.fields.file.title} />
         </div>
         <div className="content_container">
-          <h4 className="title">{title}</h4>
+          <h3 className="title">{title}</h3>
           <div className="small_text">
             <div className="date">
               <span>

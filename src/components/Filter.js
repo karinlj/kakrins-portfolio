@@ -39,16 +39,17 @@ export const Filter = ({ displayItems, activeFilter }) => {
 
   return (
     <section className="technique_options">
-      <h3>Techniques</h3>
+      <h2>Techniques</h2>
       <div className="filter_options">
         {/* looping through filters from 'big' component */}
         {filter.map((item, index) => {
           return (
-            <label className="option" htmlFor="react" key={index}>
+            <label className="option" htmlFor={item.id} key={index}>
               {item.name}
               <input
                 type="checkbox"
                 id={item.id}
+                class="sr_only"
                 name={item.name}
                 checked={item.isChecked}
                 onChange={handleChange}

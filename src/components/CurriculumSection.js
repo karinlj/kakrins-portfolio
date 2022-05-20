@@ -2,39 +2,34 @@ import React from "react";
 import Accordion from "./Accordion";
 
 function CurriculumSection({ entry }) {
-  const {
-    title,
-    titleLink,
-    date,
-    description,
-    siteList,
-    subItemList,
-  } = entry.fields;
+  const { title, titleLink, date, description, siteList, subItemList } =
+    entry.fields;
 
   return (
-    <article className="curriculumItem">
-      <h4>
-        <a href={titleLink} target="_blank" rel="noopener noreferrer">
+    <article className="curriculum_item">
+      <h2>
+        <a
+          href={titleLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Company homepage"
+        >
           {title}
           {""}
         </a>
-      </h4>
-      <div className="small_text">
-        <span className="date">{date} </span>
-      </div>
-      <div className="description">
-        <p>{description} </p>
-      </div>
+      </h2>
+      <p className="date">{date} </p>
+      <p className="description">{description}</p>
       {siteList &&
         siteList.map((site, index) => {
           return (
-            // <div className="sites">
             <div className="site" key={index}>
               <a
                 href={site}
                 alt={site}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Site page"
               >
                 {site}
                 {""}

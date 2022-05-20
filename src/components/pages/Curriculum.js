@@ -6,34 +6,44 @@ import CurriculumSection from "../CurriculumSection";
 const Curriculum = () => {
   const [workItems, setWorkItems] = useState(null);
   const [schoolItems, setSchoolItems] = useState(null);
+  const [loadingWorkItems, setLoadingWorkItems] = useState(false);
+  const [loadingSchoolItems, setLoadingSchoolItems] = useState(false);
 
-  //get workItem from contentful
-  useEffect(() => {
+  const getWorkItems = () => {
     client
       .getEntries({
         content_type: "workItem",
         order: "-fields.sortDate",
       })
       .then((response) => {
-        //console.log("response_workItem", response.items);
         setWorkItems(response.items);
+        setLoadingWorkItems(false);
       })
       .catch((error) => console.log("error", error));
-  }, []);
-
-  //get schoolItem from contentful
-  useEffect(() => {
+  };
+  const getSchoolItems = () => {
     client
       .getEntries({
         content_type: "schoolItem",
         order: "-fields.sortDate",
       })
       .then((response) => {
-        // console.log("response_schoolItems", response.items);
         setSchoolItems(response.items);
+        setLoadingSchoolItems(false);
       })
       .catch((error) => console.log("error", error));
+  };
+  //get Items from contentful
+  useEffect(() => {
+    setLoadingWorkItems(true);
+    getWorkItems();
+    setLoadingSchoolItems(true);
+    getSchoolItems();
   }, []);
+
+  useEffect(() => {
+    console.log("schoolItems: ", schoolItems);
+  }, [schoolItems]);
 
   return (
     <main className="curriculum">
@@ -44,10 +54,13 @@ const Curriculum = () => {
             <div className="bg_wrapper">
               <div className="wrapper">
                 <Header heading="Work Experience" />
-                <section className="curriculumItems">
+                <section className="curriculum_items">
                   <div className="container">
                     <div className="row">
                       <div className="col-12">
+                        {loadingWorkItems && (
+                          <p className="loading">...Loading</p>
+                        )}
                         {workItems &&
                           workItems.map((entry) => {
                             return (
@@ -67,10 +80,13 @@ const Curriculum = () => {
             <div className="bg_wrapper">
               <div className="wrapper">
                 <Header heading="Education" />
-                <section className="curriculumItems">
+                <section className="curriculum_items">
                   <div className="container">
                     <div className="row">
                       <div className="col-12">
+                        {loadingSchoolItems && (
+                          <p className="loading">...Loading</p>
+                        )}
                         {schoolItems &&
                           schoolItems.map((entry, index) => {
                             return (

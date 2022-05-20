@@ -7,6 +7,9 @@ import leaves_small from "../../images/leaves_small.jpg";
 const Home = () => {
   const [skillItems, setSkillItems] = useState(null);
   const [aboutData, setAboutData] = useState(null);
+  const [loadingAbout, setLoadingAbout] = useState(false);
+  const [loadingSkills, setLoadingskills] = useState(false);
+
   //stop the fetch when component using it unmounts
   const abortContrl = new AbortController();
 
@@ -18,10 +21,10 @@ const Home = () => {
       })
       .then((response) => {
         setAboutData(response.items[0]);
+        setLoadingAbout(false);
       })
       .catch((error) => console.log("error", error));
   };
-
   const getSkillsItems = () => {
     client
       .getEntries({
@@ -31,11 +34,14 @@ const Home = () => {
       })
       .then((response) => {
         setSkillItems(response.items);
+        setLoadingskills(false);
       })
       .catch((error) => console.log("error", error));
   };
 
   useEffect(() => {
+    setLoadingAbout(true);
+    setLoadingskills(true);
     getAboutData();
     getSkillsItems();
     //clean up
@@ -57,6 +63,7 @@ const Home = () => {
               }}
             >
               <section className="heading_box_section">
+                {loadingAbout && <p className="loading">...Loading</p>}
                 {aboutData ? (
                   <h1 className="home_name cursive">
                     {aboutData.fields.heading}
@@ -91,6 +98,8 @@ const Home = () => {
                 <h2 className="text-center cursive">Skills</h2>
 
                 <div className="boxes_inner">
+                  {loadingSkills && <p className="loading">...Loading</p>}
+
                   {skillItems &&
                     skillItems.map((entry, index) => {
                       return (
