@@ -18,7 +18,7 @@ export const Filter = ({ displayItems, activeFilter }) => {
   };
 
   useEffect(() => {
-    console.log("filter_filter_comp", techFilter);
+    //console.log("filter_filter_comp", techFilter);
   }, [techFilter]);
 
   useEffect(() => {
