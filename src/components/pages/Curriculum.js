@@ -85,8 +85,6 @@ const Curriculum = () => {
                         )}
                         {schoolItems &&
                           schoolItems.map((entry, index) => {
-                            console.log("entry: ", index);
-
                             return (
                               <CurriculumSection
                                 entry={entry}

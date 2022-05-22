@@ -18,7 +18,7 @@ const Projects = () => {
     { id: 5, name: "sass", isChecked: true },
   ];
 
-  //functon with names of checked items as parameter from 'litte' comp
+  //functon with names of checked items as parameter from Filter comp
   const displayItems = (checkedItemNames) => {
     //set state
     setCheckedTecniqueNames(checkedItemNames);
@@ -43,7 +43,6 @@ const Projects = () => {
       })
       .catch((error) => console.log("error", error));
   };
-
   //get project from contentful
   useEffect(() => {
     setLoading(true);

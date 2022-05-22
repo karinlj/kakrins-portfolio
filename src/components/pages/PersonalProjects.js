@@ -19,11 +19,10 @@ const PersonalProjects = () => {
     { id: 5, name: "typescript", isChecked: true },
   ];
 
-  //functon with names of checked items as parameter
+  //functon with names of checked items as parameter from Filter comp
   const displayItems = (checkedItemNames) => {
     setCheckedTecniqueNames(checkedItemNames);
   };
-
   //help function
   const intersection = (array1, array2) => {
     return array1.filter((element) => {
@@ -31,7 +30,6 @@ const PersonalProjects = () => {
       return array2.includes(element);
     });
   };
-
   const getPersonalProjects = () => {
     client
       .getEntries({

@@ -1,7 +1,6 @@
 import React from "react";
 
 const SingleProject = ({ project }) => {
-  //console.log("project_singleProject", project);
   const {
     title,
     link,

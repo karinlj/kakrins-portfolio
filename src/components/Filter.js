@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
+
 export const Filter = ({ displayItems, activeFilter }) => {
   //initializing state to 'big' components filter-state sent as prop
-  const [filter, setFilter] = useState(activeFilter);
+  const [techFilter, setTechFilter] = useState(activeFilter);
 
   const handleChange = (event) => {
     //  console.log("event.currentTarget", event.currentTarget);
-    let updatedFilter = [...filter];
+    let updatedFilter = [...techFilter];
     //sets chosen input to checked/unchecked
     updatedFilter.map((item) => {
       if ("" + item.id === event.target.id) {
@@ -13,18 +14,16 @@ export const Filter = ({ displayItems, activeFilter }) => {
       }
       return item;
     });
-    //set state
-    setFilter(updatedFilter);
+    setTechFilter(updatedFilter);
   };
 
   useEffect(() => {
-    // console.log("filter_filter_comp", filter);
-  }, [filter]);
+    console.log("filter_filter_comp", techFilter);
+  }, [techFilter]);
 
   useEffect(() => {
-    //puts it here to handle at first render
-    //which items are checked
-    const checkedItems = filter.filter((item) => {
+    //handle at first render which items are checked
+    const checkedItems = techFilter.filter((item) => {
       return item.isChecked;
     });
     //names of checked items
@@ -35,14 +34,13 @@ export const Filter = ({ displayItems, activeFilter }) => {
     //calling  prop-function sending checked names parameter up to parent comp
     displayItems(checkedItemNames);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filter]);
+  }, [techFilter]);
 
   return (
     <section className="technique_options">
       <h2>Techniques</h2>
       <div className="filter_options">
-        {/* looping through filters from 'big' component */}
-        {filter.map((item, index) => {
+        {techFilter.map((item, index) => {
           return (
             <label className="option" htmlFor={item.id} key={index}>
               {item.name}
