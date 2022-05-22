@@ -41,10 +41,6 @@ const Curriculum = () => {
     getSchoolItems();
   }, []);
 
-  useEffect(() => {
-    console.log("schoolItems: ", schoolItems);
-  }, [schoolItems]);
-
   return (
     <main className="curriculum">
       <div className="container">
@@ -89,6 +85,8 @@ const Curriculum = () => {
                         )}
                         {schoolItems &&
                           schoolItems.map((entry, index) => {
+                            console.log("entry: ", index);
+
                             return (
                               <CurriculumSection
                                 entry={entry}

@@ -43,13 +43,8 @@ function CurriculumSection({ entry }) {
       {subItemList &&
         subItemList.map((item, i) => {
           return (
-            <section className="course_items">
-              <Accordion
-                //key should be here in big comp
-                key={i}
-                heading={item.heading}
-                content={item.content}
-              />
+            <section className="course_items" key={i}>
+              <Accordion heading={item.heading} content={item.content} />
             </section>
           );
         })}

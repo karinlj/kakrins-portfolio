@@ -49,7 +49,7 @@ export const Filter = ({ displayItems, activeFilter }) => {
               <input
                 type="checkbox"
                 id={item.id}
-                class="sr_only"
+                className="sr_only"
                 name={item.name}
                 checked={item.isChecked}
                 onChange={handleChange}
