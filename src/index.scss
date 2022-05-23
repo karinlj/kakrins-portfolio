@@ -1031,6 +1031,8 @@ section {
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
       margin: 1rem auto;
       border-radius: $themeBorder_radius;
+      width: 100%;
+      text-align: left;
       .heading {
         cursor: pointer;
         transition: all 0.4s linear;
