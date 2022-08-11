@@ -17,6 +17,7 @@ const PersonalProjects = () => {
     { id: 3, name: "wordpress", isChecked: true },
     { id: 4, name: "aureliajs", isChecked: true },
     { id: 5, name: "typescript", isChecked: true },
+    { id: 6, name: "styled-components", isChecked: true },
   ];
 
   //functon with names of checked items as parameter from Filter comp
