@@ -1,7 +1,11 @@
 import React from "react";
 import Accordion from "./Accordion";
+import { ICurriculumItem } from "../interfaces";
 
-function CurriculumSection({ entry }) {
+interface IProps {
+  entry: ICurriculumItem;
+}
+function CurriculumSection({ entry }: IProps) {
   const { title, titleLink, date, description, siteList, subItemList } =
     entry.fields;
 
@@ -26,7 +30,6 @@ function CurriculumSection({ entry }) {
             <div className="site" key={index}>
               <a
                 href={site}
-                alt={site}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Site page"

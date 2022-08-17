@@ -29,6 +29,7 @@ To run
 ### Built With
 
 - React.js
+- Typescript
 - Contentful
 
 ### Author

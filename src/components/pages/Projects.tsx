@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Filter } from "../Filter";
-import Header from "../layout/Header";
+import HeaderPages from "../layout/HeaderPages";
 import { client } from "../../client";
 import SingleProject from "../SingleProject";
+import { IProject } from "../../interfaces";
 
 const Projects = () => {
-  const [projects, setProjects] = useState(null);
+  const [projects, setProjects] = useState<IProject[] | null>(null);
   const [loading, setLoading] = useState(false);
-
-  const [checkedTecniqueNames, setCheckedTecniqueNames] = useState([]);
-
+  const abortContrl = new AbortController();
+  const [checkedTecniqueNames, setCheckedTecniqueNames] = useState<string[]>(
+    []
+  );
   const activeFilter = [
     { id: 1, name: "vuejs", isChecked: true },
     { id: 2, name: "reactjs", isChecked: true },
@@ -17,15 +19,14 @@ const Projects = () => {
     { id: 4, name: "angular1", isChecked: true },
     { id: 5, name: "sass", isChecked: true },
   ];
-
   //functon with names of checked items as parameter from Filter comp
-  const displayItems = (checkedItemNames) => {
+  const displayItems = (names: string[]) => {
     //set state
-    setCheckedTecniqueNames(checkedItemNames);
+    setCheckedTecniqueNames(names);
   };
 
   //help function
-  const intersection = (array1, array2) => {
+  const intersection = (array1: string[], array2: string[]) => {
     return array1.filter((element) => {
       //return true or false depending on if array2 includes one element from array1
       return array2.includes(element);
@@ -35,10 +36,11 @@ const Projects = () => {
     client
       .getEntries({
         content_type: "project",
+        signal: abortContrl.signal,
         order: "-fields.releaseDate",
       })
       .then((response) => {
-        setProjects(response.items);
+        setProjects(response.items as any); // 👈️ type assertion
         setLoading(false);
       })
       .catch((error) => console.log("error", error));
@@ -47,12 +49,18 @@ const Projects = () => {
   useEffect(() => {
     setLoading(true);
     getProjects();
+    return () => {
+      abortContrl.abort();
+    };
     //eslint-disable-next-line
   }, []);
 
   return (
     <main className="">
-      <Header heading="Client Projects Page" subHeading="My Client Projects." />
+      <HeaderPages
+        heading="Client Projects Page"
+        subHeading="My Client Projects."
+      />
 
       <section className="projects">
         <div className="container">
@@ -62,7 +70,7 @@ const Projects = () => {
             {loading && <p className="loading">...Loading</p>}
             {projects &&
               //if project.techniques includes name from checkedTecniqueNames
-              projects.map((project, index) => {
+              projects.map((project) => {
                 //[]returns true
                 return intersection(
                   project.fields.techniques,

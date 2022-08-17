@@ -1,16 +1,24 @@
 import React, { useState, useEffect } from "react";
+import { IFilter } from "../interfaces";
 
-export const Filter = ({ displayItems, activeFilter }) => {
+interface IProps {
+  displayItems(names: string[]): void;
+  activeFilter: IFilter[];
+}
+export const Filter = ({ displayItems, activeFilter }: IProps) => {
   //initializing state to 'big' components filter-state sent as prop
   const [techFilter, setTechFilter] = useState(activeFilter);
 
-  const handleChange = (event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     //  console.log("event.currentTarget", event.currentTarget);
     let updatedFilter = [...techFilter];
     //sets chosen input to checked/unchecked
     updatedFilter.map((item) => {
-      if ("" + item.id === event.target.id) {
-        item.isChecked = event.target.checked;
+      const { id, checked } = event.target;
+
+      //id needs to be string
+      if ("id_" + item.id === id) {
+        item.isChecked = checked;
       }
       return item;
     });
@@ -18,11 +26,6 @@ export const Filter = ({ displayItems, activeFilter }) => {
   };
 
   useEffect(() => {
-    //console.log("filter_filter_comp", techFilter);
-  }, [techFilter]);
-
-  useEffect(() => {
-    //handle at first render which items are checked
     const checkedItems = techFilter.filter((item) => {
       return item.isChecked;
     });
@@ -30,7 +33,6 @@ export const Filter = ({ displayItems, activeFilter }) => {
     const checkedItemNames = checkedItems.map((item) => {
       return item.name;
     });
-    //  console.log("checkedItemNames_filter_comp", checkedItemNames);
     //calling  prop-function sending checked names parameter up to parent comp
     displayItems(checkedItemNames);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -42,11 +44,11 @@ export const Filter = ({ displayItems, activeFilter }) => {
       <div className="filter_options">
         {techFilter.map((item, index) => {
           return (
-            <label className="option" htmlFor={item.id} key={index}>
+            <label className="option" key={index}>
               {item.name}
               <input
                 type="checkbox"
-                id={item.id}
+                id={`id_${item.id}`}
                 className="sr_only"
                 name={item.name}
                 checked={item.isChecked}

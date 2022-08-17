@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { client } from "../../client";
 import { Filter } from "../Filter";
-import Header from "../layout/Header";
+import HeaderPages from "../layout/HeaderPages";
 import SingleProject from "../SingleProject";
+import { IProject } from "../../interfaces";
 
 const PersonalProjects = () => {
-  const [projects, setProjects] = useState(null);
+  const [projects, setProjects] = useState<IProject[] | null>(null);
   const [loading, setLoading] = useState(false);
   const abortContrl = new AbortController();
-
-  const [checkedTecniqueNames, setCheckedTecniqueNames] = useState([]);
-
+  //gets values from filter-comp
+  const [checkedTecniqueNames, setCheckedTecniqueNames] = useState<string[]>(
+    []
+  );
   const activeFilter = [
     { id: 1, name: "vuejs", isChecked: true },
     { id: 2, name: "reactjs", isChecked: true },
@@ -21,11 +23,11 @@ const PersonalProjects = () => {
   ];
 
   //functon with names of checked items as parameter from Filter comp
-  const displayItems = (checkedItemNames) => {
-    setCheckedTecniqueNames(checkedItemNames);
+  const displayItems = (names: string[]) => {
+    setCheckedTecniqueNames(names);
   };
   //help function
-  const intersection = (array1, array2) => {
+  const intersection = (array1: string[], array2: string[]) => {
     return array1.filter((element) => {
       //return true or false depending on if array2 includes one element from array1
       return array2.includes(element);
@@ -39,7 +41,7 @@ const PersonalProjects = () => {
         order: "-fields.releaseDate",
       })
       .then((response) => {
-        setProjects(response.items);
+        setProjects(response.items as any);
         setLoading(false);
       })
       .catch((error) => console.log("error", error));
@@ -55,7 +57,7 @@ const PersonalProjects = () => {
 
   return (
     <main className="">
-      <Header
+      <HeaderPages
         heading="Personal Projects Page"
         subHeading="Recent projects to explore various tecniques."
       />

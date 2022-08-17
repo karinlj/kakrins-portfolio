@@ -1,8 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import SocialIcons from "../SocialIcons";
-
-const Navlinks = ({ clickLink }) => {
+interface IProps {
+  clickLink?(): void;
+}
+const Navlinks = ({ clickLink }: IProps) => {
   return (
     <>
       <div className="link_item home_link">

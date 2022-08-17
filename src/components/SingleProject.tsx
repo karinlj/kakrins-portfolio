@@ -1,6 +1,9 @@
-import React from "react";
+import { IProject } from "../interfaces";
 
-const SingleProject = ({ project }) => {
+interface IProps {
+  project: IProject;
+}
+const SingleProject = ({ project }: IProps) => {
   const {
     title,
     link,
@@ -16,7 +19,6 @@ const SingleProject = ({ project }) => {
       <article className="project">
         <a
           href={link}
-          alt={title}
           target="_blank"
           rel="noopener noreferrer"
           className="project_link"
@@ -25,7 +27,7 @@ const SingleProject = ({ project }) => {
           link
         </a>
         <div className="featured_image">
-          <img src={image.fields.file.url} alt={image.fields.file.title} />
+          <img src={image.fields.file.url} alt={image.fields.title} />
         </div>
         <div className="content_container">
           <h3 className="title">{title}</h3>

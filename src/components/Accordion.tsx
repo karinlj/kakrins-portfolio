@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import { ISubItem } from "../interfaces";
 
-const Accordion = ({ heading, content }) => {
+const Accordion = ({ heading, content }: ISubItem) => {
   // The CURRENTTARGET property always refers to the element whose event listener triggered the event,
   //  opposed to the TARGET  property, which returns the element that triggered the event.
   const [openAccordion, setOpenAccordion] = useState(false);
 
-  const toggleAccordion = (e) => {
+  const toggleAccordion = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.currentTarget.classList.toggle("open");
     setOpenAccordion(!openAccordion);
   };

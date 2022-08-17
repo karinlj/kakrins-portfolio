@@ -1,10 +1,8 @@
-import React from "react";
 import contentful_logo_small from "../../images/contentful_logo_small.png";
 import react_logo_small from "../../images/react_logo_small.png";
 import SocialIcons from "../SocialIcons";
 
 const Footer = () => {
-  //UI component
   return (
     <footer className="footer" id="contact">
       <div className="container">
@@ -46,7 +44,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="col-lg-9">
-            <SocialIcons footerLocation="true" />
+            <SocialIcons footerLocation={true} />
           </div>
         </div>
       </div>

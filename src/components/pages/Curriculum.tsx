@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
-import Header from "../layout/Header";
+import HeaderPages from "../layout/HeaderPages";
 import { client } from "../../client";
 import CurriculumSection from "../CurriculumSection";
+import { ICurriculumItem } from "../../interfaces";
 
 const Curriculum = () => {
-  const [workItems, setWorkItems] = useState(null);
-  const [schoolItems, setSchoolItems] = useState(null);
+  const [workItems, setWorkItems] = useState<ICurriculumItem[] | null>(null);
+  const [schoolItems, setSchoolItems] = useState<ICurriculumItem[] | null>(
+    null
+  );
   const [loadingWorkItems, setLoadingWorkItems] = useState(false);
   const [loadingSchoolItems, setLoadingSchoolItems] = useState(false);
 
@@ -16,7 +19,7 @@ const Curriculum = () => {
         order: "-fields.sortDate",
       })
       .then((response) => {
-        setWorkItems(response.items);
+        setWorkItems(response.items as any);
         setLoadingWorkItems(false);
       })
       .catch((error) => console.log("error", error));
@@ -28,7 +31,7 @@ const Curriculum = () => {
         order: "-fields.sortDate",
       })
       .then((response) => {
-        setSchoolItems(response.items);
+        setSchoolItems(response.items as any);
         setLoadingSchoolItems(false);
       })
       .catch((error) => console.log("error", error));
@@ -49,7 +52,7 @@ const Curriculum = () => {
             {/* Work Experience */}
             <div className="bg_wrapper">
               <div className="wrapper">
-                <Header heading="Work Experience" />
+                <HeaderPages heading="Work Experience" />
                 <section className="curriculum_items">
                   <div className="container">
                     <div className="row">
@@ -75,7 +78,7 @@ const Curriculum = () => {
             {/* education */}
             <div className="bg_wrapper">
               <div className="wrapper">
-                <Header heading="Education" />
+                <HeaderPages heading="Education" />
                 <section className="curriculum_items">
                   <div className="container">
                     <div className="row">
@@ -84,7 +87,7 @@ const Curriculum = () => {
                           <p className="loading">...Loading</p>
                         )}
                         {schoolItems &&
-                          schoolItems.map((entry, index) => {
+                          schoolItems.map((entry) => {
                             return (
                               <CurriculumSection
                                 entry={entry}

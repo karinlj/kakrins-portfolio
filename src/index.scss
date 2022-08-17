@@ -414,10 +414,9 @@ section {
         z-index: 100;
         &:checked {
           ~ .checkmark {
-            // background-color: #2196f3;
             border: 1px solid #2e9ce6;
             background-color: #2e9ce6;
-            /* Show the checkmark when checked */
+            /* Show checkmark when checked */
             &:after {
               display: block;
             }

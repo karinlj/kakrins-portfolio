@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import monstera_lighter_s from "../../images/monstera_lighter_s.jpg";
 import { client } from "../../client";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import leaves_small from "../../images/leaves_small.jpg";
+import { IAbout, ISkill } from "../../interfaces";
 
 const Home = () => {
-  const [skillItems, setSkillItems] = useState(null);
-  const [aboutData, setAboutData] = useState(null);
+  const [skillItems, setSkillItems] = useState<ISkill[] | null>(null);
+  const [aboutData, setAboutData] = useState<IAbout | null>(null);
   const [loadingAbout, setLoadingAbout] = useState(false);
   const [loadingSkills, setLoadingskills] = useState(false);
 
@@ -20,7 +21,7 @@ const Home = () => {
         signal: abortContrl.signal,
       })
       .then((response) => {
-        setAboutData(response.items[0]);
+        setAboutData(response.items[0] as any);
         setLoadingAbout(false);
       })
       .catch((error) => console.log("error", error));
@@ -33,7 +34,7 @@ const Home = () => {
         signal: abortContrl.signal,
       })
       .then((response) => {
-        setSkillItems(response.items);
+        setSkillItems(response.items as any);
         setLoadingskills(false);
       })
       .catch((error) => console.log("error", error));

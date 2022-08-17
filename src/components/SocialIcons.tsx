@@ -1,4 +1,7 @@
-const SocialIcons = ({ footerLocation }) => {
+interface IProps {
+  footerLocation?: boolean;
+}
+const SocialIcons = ({ footerLocation }: IProps) => {
   return (
     <ul className="social_items_list">
       <li className="social_item">
