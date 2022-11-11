@@ -9,6 +9,7 @@ const ToggleBtn = ({ toggleMenu, mobileOpen }: IProps) => {
       aria-label="Mobile Menu"
       aria-expanded={mobileOpen ? "true" : "false"}
       onClick={toggleMenu}
+      data-testid="toggleBtn"
     >
       <div aria-hidden="true"></div>
     </button>

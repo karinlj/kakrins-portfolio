@@ -38,7 +38,6 @@ function CurriculumSection({ entry }: IProps) {
                 {""}
               </a>
             </div>
-            // </div>
           );
         })}
 

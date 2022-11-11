@@ -2,14 +2,17 @@ import { useState, useEffect } from "react";
 import monstera_lighter_s from "../../images/monstera_lighter_s.jpg";
 import { client } from "../../client";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import leaves_small from "../../images/leaves_small.jpg";
-import { IAbout, ISkill } from "../../interfaces";
+import monstera_square2 from "../../images/monstera_square2.jpg";
+
+import { IAbout, ISkillColumn, IWorkingWays } from "../../interfaces";
 
 const Home = () => {
-  const [skillItems, setSkillItems] = useState<ISkill[] | null>(null);
   const [aboutData, setAboutData] = useState<IAbout | null>(null);
+  const [skillColumns, setSkillColumns] = useState<ISkillColumn[] | null>(null);
+  const [workingWays, setWorkingWays] = useState<IWorkingWays[] | null>(null);
   const [loadingAbout, setLoadingAbout] = useState(false);
   const [loadingSkills, setLoadingskills] = useState(false);
+  const [loadingWorkingWays, setLoadingWorkingWays] = useState(false);
 
   //stop the fetch when component using it unmounts
   const abortContrl = new AbortController();
@@ -26,16 +29,32 @@ const Home = () => {
       })
       .catch((error) => console.log("error", error));
   };
-  const getSkillsItems = () => {
+
+  const getSkillColumns = () => {
     client
       .getEntries({
-        content_type: "skill",
+        content_type: "skillColumn",
         order: "fields.sortNumber",
         signal: abortContrl.signal,
       })
       .then((response) => {
-        setSkillItems(response.items as any);
+        setSkillColumns(response.items as any);
         setLoadingskills(false);
+      })
+      .catch((error) => console.log("error", error));
+  };
+
+  const getworkingWays = () => {
+    client
+      .getEntries({
+        content_type: "workingWays",
+        order: "fields.sortNumber",
+        signal: abortContrl.signal,
+      })
+      .then((response) => {
+        console.log("getworkingWays", workingWays);
+        setWorkingWays(response.items as any);
+        setLoadingWorkingWays(false);
       })
       .catch((error) => console.log("error", error));
   };
@@ -44,7 +63,8 @@ const Home = () => {
     setLoadingAbout(true);
     setLoadingskills(true);
     getAboutData();
-    getSkillsItems();
+    getSkillColumns();
+    getworkingWays();
     //clean up
     return () => {
       abortContrl.abort();
@@ -97,34 +117,72 @@ const Home = () => {
             <div className="col-12">
               <section className="boxes">
                 <h2 className="text-center cursive">Skills</h2>
+                <p className="text-center">
+                  <strong>
+                    Some of my skills. Always wanting to learn more...
+                  </strong>
+                </p>
 
                 <div className="boxes_inner">
                   {loadingSkills && <p className="loading">...Loading</p>}
 
-                  {skillItems &&
-                    skillItems.map((entry, index) => {
+                  {skillColumns &&
+                    skillColumns.map((entry, index) => {
+                      const { icon, title, content } = entry.fields;
                       return (
                         <div
                           className="box"
-                          style={{ background: `url(${leaves_small})` }}
+                          style={{
+                            background: `url(${monstera_square2}) no-repeat`,
+                          }}
                           key={entry.sys.id}
                         >
                           <div className="boxes_text_part_outer">
                             <div className="boxes_text_part_inner">
                               <i
-                                className={`fas fa-${entry.fields.icon} boxes_icon`}
+                                className={`fas fa-${icon} boxes_icon`}
                                 aria-hidden="true"
                               ></i>
                               <i
-                                className={`fab fa-${entry.fields.icon} boxes_icon`}
+                                className={`fab fa-${icon} boxes_icon`}
                                 aria-hidden="true"
                               ></i>
-                              <h3 className="heading"> {entry.fields.title}</h3>
+                              <h3 className="heading"> {title}</h3>
                               <div className="text">
-                                {documentToReactComponents(
-                                  entry.fields.content
-                                )}
+                                {documentToReactComponents(content)}
                               </div>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                </div>
+              </section>
+
+              <section className="boxes">
+                <h2 className="text-center cursive">How I like to work</h2>
+                <div className="boxes_inner workingWays">
+                  {loadingWorkingWays && <p className="loading">...Loading</p>}
+
+                  {workingWays &&
+                    workingWays.map((entry, index) => {
+                      const { icon, title, list } = entry.fields;
+
+                      return (
+                        <div className="box workingWays">
+                          <div className="boxes_text_part_outer" key={index}>
+                            <div className="boxes_text_part_inner">
+                              <i
+                                className={`fas fa-${icon} boxes_icon`}
+                                aria-hidden="true"
+                              ></i>
+                              <h3 className="heading">{title}</h3>
+
+                              <ul>
+                                {list.map((item, index) => {
+                                  return <li key={index}>{item}</li>;
+                                })}
+                              </ul>
                             </div>
                           </div>
                         </div>

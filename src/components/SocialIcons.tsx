@@ -3,7 +3,7 @@ interface IProps {
 }
 const SocialIcons = ({ footerLocation }: IProps) => {
   return (
-    <ul className="social_items_list">
+    <ul className="social_items_list" data-testid="socialMedia">
       <li className="social_item">
         <a
           href="mailto:kaljunggren@gmail.com"
@@ -12,7 +12,10 @@ const SocialIcons = ({ footerLocation }: IProps) => {
         >
           <i className="fas fa-envelope" aria-hidden="true"></i>
           {footerLocation ? (
-            <span className="social_item_name"> kaljunggren@gmail.com</span>
+            <span className="social_item_name" data-testid="textSpan">
+              {" "}
+              kaljunggren@gmail.com
+            </span>
           ) : null}
         </a>
       </li>

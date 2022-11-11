@@ -11,7 +11,18 @@ export interface IAbout {
     aboutContent: any;
   };
 }
-export interface ISkill {
+export interface IWorkingWays {
+  fields: {
+    title: string;
+    icon: string;
+    list: string[];
+  };
+  sys: {
+    id: number;
+  };
+}
+
+export interface ISkillColumn {
   fields: {
     icon: string;
     title: string;
