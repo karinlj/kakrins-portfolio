@@ -90,19 +90,16 @@ p,
 li {
   font-size: 1rem;
   line-height: 1.6;
-  @media all and (min-width: $md-min) {
-    font-size: 1.1rem;
-  }
-  @media all and (min-width: $lg-min) {
-    font-size: 1.175rem;
+  @media all and (min-width: $xl-min) {
+    font-size: 1.05rem;
   }
 }
 section {
   p {
     font-size: 1rem;
     line-height: 1.4;
-    @media all and (min-width: $lg-min) {
-      font-size: 1.1rem;
+    @media all and (min-width: $xl-min) {
+      font-size: 1.05rem;
     }
   }
   h2,
@@ -543,9 +540,9 @@ section {
 ***********************/
 .skills_section {
   .boxes {
-    margin-bottom: 3.5rem;
+    margin-bottom: 2.5rem;
     @media all and (min-width: $md-min) {
-      margin-bottom: 5rem;
+      margin-bottom: 4rem;
     }
     h2 {
       font-size: 3rem;
@@ -648,7 +645,7 @@ section {
         }
       }
       @media all and (min-width: $lg-min) {
-        height: 910px;
+        height: 880px;
         &:nth-of-type(1) {
           border-top-right-radius: 0;
           border-bottom-left-radius: $themeBorder_radius;
@@ -876,9 +873,9 @@ section {
   }
   .home_text {
     margin: 0 auto;
-    padding: 3.5rem;
+    padding: 2.5rem;
     @media all and (min-width: $md-min) {
-      padding: 5rem;
+      padding: 4rem;
       max-width: 75%;
     }
     @media all and (min-width: $lg-min) {
