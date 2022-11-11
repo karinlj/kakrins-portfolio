@@ -161,6 +161,11 @@ const Home = () => {
 
               <section className="boxes">
                 <h2 className="text-center cursive">How I like to work</h2>
+                <p className="text-center">
+                  <strong>
+                    I am developing for people and value communication.
+                  </strong>
+                </p>
                 <div className="boxes_inner workingWays">
                   {loadingWorkingWays && <p className="loading">...Loading</p>}
 
