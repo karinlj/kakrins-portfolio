@@ -540,7 +540,7 @@ section {
 ***********************/
 .skills_section {
   .boxes {
-    margin-bottom: 2.5rem;
+    margin-bottom: 3.5rem;
     @media all and (min-width: $md-min) {
       margin-bottom: 4rem;
     }
@@ -549,15 +549,14 @@ section {
       margin-bottom: 2rem;
     }
     > p {
-      max-width: 50%;
-      margin: 0 auto;
+      padding: 0 2rem;
       margin-bottom: 2rem;
     }
   }
   .boxes_inner {
     display: flex;
     flex-direction: column;
-    @media all and (min-width: $xl-min) {
+    @media all and (min-width: $lg-min) {
       flex-direction: row !important;
       flex-wrap: wrap;
     }
@@ -613,7 +612,7 @@ section {
       }
       &.workingWays {
         flex: 0 0 50%;
-        height: 550px;
+        height: auto;
         ul {
           list-style: none;
           padding-left: 0;
@@ -675,7 +674,8 @@ section {
     }
     .boxes_text_part_inner {
       @media all and (max-width: $sm-max) {
-        padding: 5.6rem 0;
+        // padding: 5.6rem 0;
+        padding: 3rem 0;
       }
       ul {
         padding-left: 1rem;
@@ -873,7 +873,7 @@ section {
   }
   .home_text {
     margin: 0 auto;
-    padding: 2.5rem;
+    padding: 2.5rem 2rem;
     @media all and (min-width: $md-min) {
       padding: 4rem;
       max-width: 75%;
